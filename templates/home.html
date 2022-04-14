@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    <title>Haste</title>
+</head>
+<body>
+    {% if logged == True %}
+
+    <h1>Hello you are logged in. {{ user.username }}</h1>
+    <a href="{{url_for('logout')}}">logout</a>
+
+    {% else %}
+    <text>sign in or register</text>
+    <a href="{{ url_for('login') }}">Log In</a>
+    <a href="{{ url_for('register') }}">Register</a>
+    {% endif %}
+</body>
+</html>
