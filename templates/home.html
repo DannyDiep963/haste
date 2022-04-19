@@ -5,9 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
-    <title>Haste</title>
+    <title>Haste Trading Company</title>
 </head>
 <body>
+    <div class="banner">
+        <div class="navbar">
+            <img src="logo.jpg" class="logo">
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="#news">News</a></li>
+                <li><a href="#partners">Partners</a></li>
+                <li><a href="#aboutus">About Us</a></li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <hl>HASTE TRADING COMPANY OFFICIAL WEBSITE</hl>
+            <p>Here you will find all the information you will need to know about
+            our company. <br>Please do not hesitate to contact us about any questions you
+            may have.</p>
+            <div>
+            <button type="button"><span></span>LOGIN</button>
+
+            <a href="http://www.fullerton.edu/">
+                <button type="button"><span></span>CONTACT US</button>
+            </a>
+            </div>
+        </div>
+    </div>
     {% if logged == True %}
 
     <h1>Hello you are logged in. {{ user.username }}</h1>
@@ -18,5 +43,9 @@
     <a href="{{ url_for('login') }}">Log In</a>
     <a href="{{ url_for('register') }}">Register</a>
     {% endif %}
+
+
+
 </body>
+
 </html>

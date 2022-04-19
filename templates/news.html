@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/news.css') }}">
+    <title>Haste Trading Company</title>
+</head>
+<body>
+    <div class="banner">
+        <div class="navbar">
+            <img src="logo.jpg" class="logo">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><h1></h1><a href="news.html">News</a></li>
+                <li><a href="#">Partners</a></li>
+                <li><a href="#">About Us</a></li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <hl>HASTE TRADING COMPANY NEWS</hl>
+            <p>News will be here</p>
+            <div>
+            <button type="button"><span></span>LOGIN</button>
+            <button type="button"><span></span>CONTACT US</button>
+            </div>
+        </div>
+    </div>
+    {% if logged == True %}
+
+    <h1>Hello you are logged in. {{ user.username }}</h1>
+    <a href="{{url_for('logout')}}">logout</a>
+
+    {% else %}
+    <text>sign in or register</text>
+    <a href="{{ url_for('login') }}">Log In</a>
+    <a href="{{ url_for('register') }}">Register</a>
+    {% endif %}
+</body>
+</html>
