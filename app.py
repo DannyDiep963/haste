@@ -44,7 +44,7 @@ class LoginForm(FlaskForm):
 
 @app.route('/')
 def index():
-    return render_template("home.html", logged=False)
+    return render_template("home.html")
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -68,7 +68,7 @@ def load_user(user_id):
 @login_required
 def logout():
     logout_user()
-    return render_template("home.html", logged=False)
+    return render_template("home.html")
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -77,8 +77,12 @@ def login():
         user_info = user.query.filter_by(username=form.username.data).first()
         if user_info:
             login_user(user_info)
-            return render_template("home.html", logged=True, user=user_info)
+            return render_template("home.html", user=user_info)
     return render_template("login.html", form=form)
+
+@app.route('/news', methods=['GET', 'POST'])
+def news():
+     return render_template("news.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
