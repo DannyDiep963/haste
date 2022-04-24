@@ -11,15 +11,16 @@
     <div class = "content">
         <h1>Log In</h1>
         <form method="POST" action="">
-            <text>username: </text>
+           <!--<text>username: </text>-->
             {{ form.username }}
-            <text>password: </text>
+           <!-- <text>password: </text>-->
             {{ form.password }}
             {{ form.submit }}
             {{ form.hidden_tag() }}
         </form>
 
-        <a href="{{ url_for('register') }}">Dont have account? Register</a>
+        <div class="signup"><a href="{{ url_for('register') }}">Don't have an account? Register</a></div>
+        <!--<a href="{{ url_for('register') }}">Dont have account? Register</a>-->
     </div>
 </body>
 </html>

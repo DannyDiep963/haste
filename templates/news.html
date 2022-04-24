@@ -13,16 +13,19 @@
             <img src="logo.jpg" class="logo">
             <ul>
                 <li><a href="{{ url_for('index') }}">Home</a></li>
-                <li><h1></h1><a href="{{ url_for('news') }}">News</a></li>
-                <li><a href="#">Partners</a></li>
-                <li><a href="#">About Us</a></li>
+                <li><a href="{{ url_for('news') }}">News</a></li>
+                <li><a href="{{ url_for('partners') }}">Partners</a></li>
+                <li><a href="{{ url_for('aboutus') }}">About Us</a></li>
             </ul>
         </div>
 
         <div class="content">
-            <hl>HASTE TRADING COMPANY NEWS</hl>
-            <p>News will be here</p>
-            {% if current_user.is_authenticated %}
+            <h1>HASTE TRADING COMPANY OFFICIAL WEBSITE</h1>
+            <p>Here you will find all the information you will need to know about
+            our company. <br>Please do not hesitate to contact us about any questions you
+            may have.</p>
+            <div>
+                {% if current_user.is_authenticated %}
                 <a href="{{ url_for('logout') }}">
                     <button type="button"><span></span>LOGOUT</button>
                 </a>
@@ -37,7 +40,9 @@
                     <button type="button"><span></span>CONTACT US</button>
                 </a>
                 {% endif %}
+            </div>
         </div>
     </div>
 </body>
+
 </html>
