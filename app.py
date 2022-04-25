@@ -91,6 +91,14 @@ def login():
 def news():
     return render_template("news.html")
 
+@app.route('/partners', methods=['GET', 'POST'])
+def partners():
+    return render_template("partners.html")
+
+@app.route('/aboutus', methods=['GET', 'POST'])
+def aboutus():
+    return render_template("aboutus.html")
+
 @app.route('/dashboard', methods=['GET', 'POST'])
 def dashboard():
     form = DashboardForm()
