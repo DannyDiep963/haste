@@ -1,7 +1,5 @@
-from decimal import ROUND_DOWN
-from email.policy import default
 import bcrypt
-from flask import Flask, redirect, render_template, url_for, request
+from flask import Flask, redirect, render_template, url_for
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
