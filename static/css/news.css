@@ -58,7 +58,7 @@
     width: 100%;
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-45%);
     text-align: center;
     color:#fff;
 }
@@ -71,14 +71,14 @@
 
 .content h2{
     margin: 20px auto;
-    margin-left: 15%;
     font-weight: 100;
-    line-height: 25px;
-    text-align: left;
+    line-height: 10px;
+    text-align: center;
+    font-weight: 700;
 }
 
 .content p{
-    margin: 20px auto;
+    margin: 10px auto;
     margin-left: 15%;
     margin-right: 15%;
     font-weight: 100;
@@ -88,7 +88,7 @@
 }
 
 .content img{
-    margin: 20px auto;
+    margin: 10px auto;
     background-color: dimgray;
 }
 
