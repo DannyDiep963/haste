@@ -5,8 +5,8 @@ Project Haste is a fake company website with user inferface, login/register func
 Depolyed Website: https://haste-company.herokuapp.com/
 
 Project Haste Team Members:
-Steven Chiang
-Khoi Nguyen
+Steven Chiang  
+Khoi Nguyen  
 Thomas Fang
 
 The MIT License (MIT)
