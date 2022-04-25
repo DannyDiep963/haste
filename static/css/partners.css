@@ -58,7 +58,7 @@
     width: 100%;
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-45%);
     text-align: center;
     color:#fff;
 }
@@ -69,10 +69,26 @@
     font-weight: 700;
 }
 
+.content h2{
+    margin: 10px auto;
+    font-weight: 100;
+    line-height: 10px;
+    text-align: center;
+    font-weight: 700;
+}
+
 .content p{
-    margin: 20px auto;
+    margin: 5px auto;
+    margin-left: 20%;
+    margin-right: 20%;
     font-weight: 100;
     line-height: 25px;
+    text-align: left;
+    background-color:dimgray
+}
+
+.content img{
+    margin: 5px auto;
 }
 
 button{
