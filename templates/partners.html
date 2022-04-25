@@ -23,8 +23,37 @@
         </div>
 
         <div class="content">
-            <hl>HASTE TRADING COMPANY PARTNERS</hl>
-            <p>Partners</p>
+            <h2>HASTE TRADING COMPANY'S PROUD PARTNERS:</h2>
+            <div>
+                <img src="static\css/robinhood.png" width="384" height="200">
+            </div>
+            <p>
+                Robinhood is an American financial services company.
+                They have created a simple  and powerful app that is
+                easy to use, with only a swipe of a finger, you can buy
+                whatever stock you wish! They have streamlined the stock
+                trading experience to make the process easy to understand for
+                inexperienced traders.They offer commission-free
+                investing and provide tools needed to help secure your
+                financial future! Haste is excited to say that our company is
+                being publicly traded on the NYSE as of 2077 and that by using Robinhood,
+                you could be a potential shareholder with a swipe of a finger!
+
+            </p>
+            <div>
+                <img src="static\css/nucor.png" width="384" height="200">
+            </div>
+            <p>
+                Nucor Corportation  makes the safest, highest quality,
+                lowest cost, most productive, and most profitable steel
+                and steel products around the world. Nucor is a producer
+                of steel and related products and is based in Charlotte,
+                North Carolina. It is the largest steel producer in the
+                United States, as well as the largest
+                "mini-mill" steel maker. Haste takes pride in helping the
+                planet and is proud to say that our partner, Nucor, is the
+                biggest recycler of scrap in North America.
+            </p>
             {% if current_user.is_authenticated %}
                 <a href="{{ url_for('logout') }}">
                     <button type="button"><span></span>LOGOUT</button>
