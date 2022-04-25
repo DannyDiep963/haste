@@ -106,8 +106,6 @@ def dashboard():
         user_info = user.query.filter_by(username=current_user.username).first()
         if user_info and form.invested_input.data > 0.00 and form.invested_input.data < 500:
             user_info.amount_invested = user_info.amount_invested + math.floor(float(form.invested_input.data) * 100)/100.0
-            print(user_info.amount_invested)
-            print(math.floor(float(form.invested_input.data) * 100)/100.0)
             db.session.commit()
         return redirect(url_for('dashboard'))
     return render_template("dashboard.html", form=form)
