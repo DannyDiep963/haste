@@ -1,3 +1,4 @@
+from decimal import ROUND_DOWN
 from email.policy import default
 import bcrypt
 from flask import Flask, redirect, render_template, url_for, request
@@ -5,14 +6,16 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField
+from wtforms import StringField, PasswordField, SubmitField, DecimalField
 from wtforms.validators import InputRequired, Length, ValidationError
 from flask_bcrypt import Bcrypt
+import os
 import sys
+import math
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///haste.db'
-app.config['SECRET_KEY'] = "tempfornow"
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', "dev")
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 
@@ -24,6 +27,7 @@ class user(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), unique=True, nullable = False)
     password = db.Column(db.String(80), nullable = False)
+    amount_invested = db.Column(db.Float, nullable = False)
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
 
 class RegisterForm(FlaskForm):
@@ -41,6 +45,9 @@ class LoginForm(FlaskForm):
     password = PasswordField(validators=[ InputRequired(), Length(min=8, max=20)], render_kw={"placeholder": "Password"})
     submit = SubmitField('Log in')
 
+class DashboardForm(FlaskForm):
+    invested_input = DecimalField(validators=[ InputRequired()], places=2, rounding=None, render_kw={"placeholder": "0.00"})
+    submit = SubmitField('Invest')
 
 @app.route('/')
 def index():
@@ -53,7 +60,7 @@ def register():
     if form.validate_on_submit():
         print('Hello !', form.password.data, file=sys.stderr)
         hashed_password = bcrypt.generate_password_hash(form.password.data)
-        new_user = user(username=form.username.data, password=hashed_password)
+        new_user = user(username=form.username.data, password=hashed_password, amount_invested=0.00)
         db.session.add(new_user)
         db.session.commit()
         return redirect(url_for('login'))
@@ -82,7 +89,20 @@ def login():
 
 @app.route('/news', methods=['GET', 'POST'])
 def news():
-     return render_template("news.html")
+    return render_template("news.html")
+
+@app.route('/dashboard', methods=['GET', 'POST'])
+def dashboard():
+    form = DashboardForm()
+    if form.validate_on_submit():
+        user_info = user.query.filter_by(username=current_user.username).first()
+        if user_info and form.invested_input.data > 0.00 and form.invested_input.data < 500:
+            user_info.amount_invested = user_info.amount_invested + math.floor(float(form.invested_input.data) * 100)/100.0
+            print(user_info.amount_invested)
+            print(math.floor(float(form.invested_input.data) * 100)/100.0)
+            db.session.commit()
+        return redirect(url_for('dashboard'))
+    return render_template("dashboard.html", form=form)
 
 if __name__ == "__main__":
     app.run(debug=True)
