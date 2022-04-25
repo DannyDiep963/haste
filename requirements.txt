@@ -1,0 +1,10 @@
+flask
+sqlalchemy
+flask-sqlalchemy
+datetime
+flask_login
+flask_wtf
+wtforms
+wtforms.validators
+flask_bcrypt
+gunicorn
