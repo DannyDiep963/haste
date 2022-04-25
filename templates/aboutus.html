@@ -23,8 +23,28 @@
         </div>
 
         <div class="content">
-            <hl>HASTE TRADING COMPANY NEWS</hl>
-            <p>News will be here</p>
+            <h2>About Us</h2>
+            <div>
+                <img src="static\css/logo.png" width="400" height="200">
+            </div>
+            <p>
+                &emsp; We are Haste. We are a trade company with an emphasis on fast growth and
+                a stable develpment cycle to push out features that allow our product to
+                grow. We have a dedicated team who are hard at work to bring our customer
+                features that will satisfy them.<br>
+                &emsp; Not too long ago, we were only a small team of three people working on a
+                small project that we did not know will grow up to be what it is today. What was
+                a small project back then now is a fast growing company with stockholders backing
+                up our vision. We are looking to continue growing and improve our product.<br>
+                &emsp; We hope to provide to you a "haste" epxerience when you buy our product and
+                invest in us. Our backend team are always available to deal with any issues that
+                might occur and making sure that your money is safe with us. We also committed to
+                improving our technology to further increase efficiency of your product, resulting
+                in increase growth and more returns for our customer ivesting in us.<br>
+                &emsp; With that, we hope that you will continue to support us and our visions. If
+                you are not already supporting us, we hope that we can convince you to give us a chance
+                to make you money in the future.
+            </p>
             {% if current_user.is_authenticated %}
                 <a href="{{ url_for('logout') }}">
                     <button type="button"><span></span>LOGOUT</button>
