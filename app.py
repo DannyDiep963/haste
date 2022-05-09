@@ -7,13 +7,6 @@ from flask_wtf import FlaskForm, RecaptchaField
 from wtforms import StringField, PasswordField, SubmitField, DecimalField
 from wtforms.validators import InputRequired, Length, ValidationError
 from flask_bcrypt import Bcrypt
-# Import captcha modules
-# import uuid
-# import logging
-# from flask_sessionstore import Session
-# from flask_session_captcha import FlaskSessionCaptcha
-
-
 import os
 import sys
 import math
