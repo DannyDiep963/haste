@@ -3,10 +3,17 @@ from flask import Flask, redirect, render_template, url_for
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
-from flask_wtf import FlaskForm
+from flask_wtf import FlaskForm, RecaptchaField
 from wtforms import StringField, PasswordField, SubmitField, DecimalField
 from wtforms.validators import InputRequired, Length, ValidationError
 from flask_bcrypt import Bcrypt
+# Import captcha modules
+# import uuid
+# import logging
+# from flask_sessionstore import Session
+# from flask_session_captcha import FlaskSessionCaptcha
+
+
 import os
 import sys
 import math
@@ -16,6 +23,11 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///haste.db'
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', "dev")
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
+
+# Captcha config
+app.config['RECAPTCHA_PUBLIC_KEY'] = "6Le89dQfAAAAAKfxL2w91FR6fM1pEfFMybbH5lC7"
+app.config['RECAPTCHA_PRIVATE_KEY'] = "6Le89dQfAAAAAJrokLv4XUE7yVAvTIIUzRfSdoko"
+app.config['TESTING'] = True
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -41,6 +53,7 @@ class RegisterForm(FlaskForm):
 class LoginForm(FlaskForm):
     username = StringField(validators=[ InputRequired(), Length(min=6, max=20)], render_kw={"placeholder": "Username"})
     password = PasswordField(validators=[ InputRequired(), Length(min=8, max=20)], render_kw={"placeholder": "Password"})
+    recaptcha = RecaptchaField()
     submit = SubmitField('Log in')
 
 class DashboardForm(FlaskForm):
